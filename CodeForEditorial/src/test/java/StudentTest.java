@@ -51,7 +51,12 @@ class StudentTest {
     @Test
     void displayMethodSignatureCheck() throws NoSuchMethodException {
         Method displayMethod = student.getClass().getDeclaredMethod("display");
-        assertEquals(displayMethod.toString(), "void Student.display()");
+
+        Class<?>[] expectedParameterTypes = new Class[]{};
+        Class<?> expectedReturnType = void.class;
+
+        assertTrue(displayMethod.getReturnType().equals(expectedReturnType));
+        assertArrayEquals(expectedParameterTypes, displayMethod.getParameterTypes());
     }
 
     @Test
@@ -66,7 +71,12 @@ class StudentTest {
     @Test
     void sayHelloMethodSignatureCheck() throws NoSuchMethodException {
         Method sayHelloMethod = student.getClass().getDeclaredMethod("sayHello", String.class);
-        assertEquals(sayHelloMethod.toString(), "void Student.sayHello(java.lang.String)");
+
+        Class<?>[] expectedParameterTypes = new Class[]{String.class};
+        Class<?> expectedReturnType = void.class;
+
+        assertTrue(sayHelloMethod.getReturnType().equals(expectedReturnType));
+        assertArrayEquals(expectedParameterTypes, sayHelloMethod.getParameterTypes());
     }
 
     @Test
